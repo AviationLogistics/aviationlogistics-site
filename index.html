@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aviation Logistics | Central Asia</title>
+  <meta name="description" content="Building an integrated aviation and logistics platform in Central Asia." />
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg2:#0b1d34;
+      --text:#f5f8fc;
+      --muted:#aebdd0;
+      --accent:#67d3ff;
+      --line:rgba(255,255,255,.12);
+      --max:1160px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 70% 20%, rgba(103,211,255,.12), transparent 28%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
+    }
+
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+
+    header{
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:10;
+      background:rgba(7,17,31,.72);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    nav{
+      height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      font-weight:800;
+      letter-spacing:.01em;
+    }
+
+    .domain{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .hero{
+      min-height:92vh;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:130px 0 80px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero:before{
+      content:"";
+      position:absolute;
+      width:780px;
+      height:780px;
+      border:1px solid rgba(103,211,255,.12);
+      border-radius:50%;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-48%);
+      box-shadow:
+        0 0 0 140px rgba(103,211,255,.025),
+        0 0 0 280px rgba(103,211,255,.015);
+    }
+
+    .hero-inner{position:relative;z-index:1;max-width:920px}
+
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.78rem;
+      color:var(--accent);
+      font-weight:800;
+      margin-bottom:22px;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(3rem,7vw,6.4rem);
+      line-height:.94;
+      letter-spacing:-.055em;
+    }
+
+    .hero p{
+      max-width:760px;
+      margin:28px auto 0;
+      color:var(--muted);
+      font-size:clamp(1.05rem,2vw,1.28rem);
+      line-height:1.7;
+    }
+
+    .cta-row{
+      margin-top:34px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:13px 20px;
+      border-radius:999px;
+      font-weight:700;
+      border:1px solid var(--line);
+    }
+
+    .btn-primary{
+      background:var(--text);
+      color:#081525;
+    }
+
+    .btn-secondary{
+      background:rgba(255,255,255,.04);
+    }
+
+    section{padding:90px 0}
+
+    .section-heading{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 46px;
+    }
+
+    .section-heading h2{
+      font-size:clamp(2rem,4vw,3.4rem);
+      letter-spacing:-.04em;
+      margin:0 0 16px;
+    }
+
+    .section-heading p{
+      color:var(--muted);
+      margin:0;
+      line-height:1.7;
+    }
+
+    .pillars{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .card{
+      padding:30px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:rgba(255,255,255,.035);
+      min-height:210px;
+    }
+
+    .card span{
+      color:var(--accent);
+      font-size:.8rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+
+    .card h3{
+      font-size:1.35rem;
+      margin:18px 0 12px;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    .roadmap{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .step{
+      padding:24px;
+      border-top:2px solid rgba(103,211,255,.5);
+      background:rgba(255,255,255,.025);
+      min-height:150px;
+    }
+
+    .step small{
+      color:var(--accent);
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .step h3{margin:12px 0 8px;font-size:1.1rem}
+    .step p{margin:0;color:var(--muted);font-size:.94rem;line-height:1.55}
+
+    .contact{
+      text-align:center;
+      padding:90px 0 110px;
+    }
+
+    .contact-box{
+      padding:54px 28px;
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:
+        radial-gradient(circle at top right, rgba(103,211,255,.14), transparent 30%),
+        rgba(255,255,255,.035);
+    }
+
+    .contact-box h2{
+      margin:0 0 14px;
+      font-size:clamp(2rem,4vw,3.6rem);
+      letter-spacing:-.04em;
+    }
+
+    .contact-box p{
+      margin:0 auto 24px;
+      max-width:650px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    footer{
+      border-top:1px solid rgba(255,255,255,.07);
+      color:#8fa2b8;
+      font-size:.88rem;
+      padding:26px 0 38px;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    @media(max-width:820px){
+      .pillars,.roadmap{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:560px){
+      .pillars,.roadmap{grid-template-columns:1fr}
+      .domain{display:none}
+      .hero{min-height:auto;padding-top:140px}
+      section{padding:70px 0}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="brand" href="#top">AVIATION LOGISTICS</a>
+      <div class="domain">aviationlogistics.online</div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="eyebrow">Central Asia · Aviation · Logistics</div>
+      <h1>Connecting Central Asia to global trade.</h1>
+      <p>
+        We are developing an integrated aviation and logistics platform in Kyrgyzstan,
+        starting with air cargo and expanding into logistics, aviation training and
+        related infrastructure.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#vision">Our vision</a>
+        <a class="btn btn-secondary" href="#contact">Investor enquiries</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="vision">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">The opportunity</div>
+        <h2>A regional platform built in phases.</h2>
+        <p>
+          Our objective is to create a scalable aviation and logistics ecosystem positioned
+          around Central Asia's growing role in regional and international trade.
+        </p>
+      </div>
+
+      <div class="pillars">
+        <div class="card">
+          <span>01</span>
+          <h3>Strategic location</h3>
+          <p>
+            Kyrgyzstan offers a natural position between major markets across Asia,
+            the Middle East, the CIS and Europe.
+          </p>
+        </div>
+
+        <div class="card">
+          <span>02</span>
+          <h3>Integrated model</h3>
+          <p>
+            Air cargo and logistics capabilities are designed to reinforce one another
+            and create a stronger regional platform.
+          </p>
+        </div>
+
+        <div class="card">
+          <span>03</span>
+          <h3>Phased growth</h3>
+          <p>
+            The platform is being developed step by step, allowing each stage to be
+            evaluated before further expansion.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Development roadmap</div>
+        <h2>One platform. Four stages.</h2>
+      </div>
+
+      <div class="roadmap">
+        <div class="step">
+          <small>Phase 1</small>
+          <h3>Cargo Airline</h3>
+          <p>Establish the core air-freight operation.</p>
+        </div>
+
+        <div class="step">
+          <small>Phase 2</small>
+          <h3>Digital Logistics</h3>
+          <p>Develop integrated logistics and forwarding services.</p>
+        </div>
+
+        <div class="step">
+          <small>Phase 3</small>
+          <h3>Aviation Training</h3>
+          <p>Build long-term aviation talent and training capability.</p>
+        </div>
+
+        <div class="step">
+          <small>Phase 4</small>
+          <h3>Integrated Group</h3>
+          <p>Bring the businesses together under a unified platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <div class="eyebrow">Investor relations</div>
+        <h2>Building the platform now.</h2>
+        <p>
+          We are engaging with qualified investors, strategic partners and industry
+          participants interested in the development of a new aviation and logistics
+          platform in Central Asia.
+        </p>
+        <a class="btn btn-primary" href="https://aviationlogistics.online">
+          aviationlogistics.online
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div>© 2026 Aviation Logistics</div>
+    <div>
+      Preliminary information only. This website does not constitute an offer,
+      solicitation or investment recommendation.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
